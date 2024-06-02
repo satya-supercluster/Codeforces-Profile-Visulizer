@@ -19,7 +19,7 @@ const RatingGraph = ({userRatings,name}) => {
       <div className='text-xl text-center font-bold mb-2'>
         Rating Graph
       </div>
-      <div className="w-[90%] lg:w-[65%]">
+      <div className="w-[100%] flex justify-center lg:w-[65%]">
         <Line data={data} />
       </div>
     </div>

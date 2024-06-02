@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import SearchBox from "./components/SearchBox";
 import UserInfo from "./components/UserInfo";
 import RatingGraph from "./components/RatingGraph";
+import TagChart from "./components/TagChart";
 export default function App() {
   const [userInfo, setUserInfo] = useState(null);
   const [userProblems, setUserProblems] = useState(null);
@@ -16,12 +17,15 @@ export default function App() {
           setUserProblems={setUserProblems}
           setUserRatings={setUserRatings}
         />
-        {userInfo && (
+        {userInfo && userProblems && userRatings && (
           <div className="flex justify-center">
             <UserInfo userInfo={userInfo} />
           </div>
         )}
-        {userRatings && (
+        {userInfo && userProblems && userRatings && (
+          <TagChart userProblems={userProblems} />
+        )}
+        {userInfo && userProblems && userRatings && (
           <RatingGraph
             userRatings={userRatings}
             name={`${userInfo.firstName} ${userInfo.lastName}`}

@@ -17,12 +17,12 @@ const UserInfoGrid = ({ userInfo }) => {
             <img
               src={userInfo.titlePhoto}
               alt="Avatar"
-              className="w-20 h-20 rounded-full object-cover"
+              className=" h-28 sm:h-56 rounded-lg object-contain"
             />
           </a>
         </p>
         <p style={{ color: getColor() }} className="text-center">
-          <span className="font-bold underline">
+          <span className="font-bold text-xl underline">
             <a href={link}>
               {userInfo.firstName} {userInfo.lastName}
             </a>

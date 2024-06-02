@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import code from "/code.svg";
-const SearchBox = ({ setUserInfo, setUserRatings }) => {
+const SearchBox = ({ setUserInfo, setUserRatings, setUserProblems }) => {
   const searchInputRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
@@ -64,6 +64,23 @@ const SearchBox = ({ setUserInfo, setUserRatings }) => {
             setShowError(false);
           }, 5000);
         }
+
+        // problems fetching
+        const response2 = await fetch(
+          `${import.meta.env.VITE_CF_URL}user.status?handle=${searchValue}`
+        );
+        const problem = await response2.json();
+        if (problem.status === "OK") {
+          setUserProblems(problem.result);
+        } else if (problem.status === "FAILED") {
+          // error ocurred
+          setErrorMessage(problem.comment);
+          setUserInfo(null);
+          setShowError(true);
+          setTimeout(() => {
+            setShowError(false);
+          }, 5000);
+        }
         // stop loader
         setLoader(false);
       } catch (error) {
@@ -113,7 +130,7 @@ const SearchBox = ({ setUserInfo, setUserRatings }) => {
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 sm:px-4 py-2 "
+            className="max-[300px]:hidden text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 sm:px-4 py-2 "
           >
             Search
           </button>
@@ -130,9 +147,9 @@ const SearchBox = ({ setUserInfo, setUserRatings }) => {
             <img
               src={code}
               alt="Avatar"
-              className="w-20 mb-5 h-20 rounded-full object-cover"
+              className=" w-56 mb-5 rounded-full object-cover"
             />
-            <div className="text-orange-700 font-bold text-2xl ">
+            <div className="text-orange-700 font-bold text-2xl mb-10">
               Loading...
             </div>
           </div>
