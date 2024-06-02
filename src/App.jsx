@@ -6,7 +6,7 @@ export default function App() {
   const [userInfo, setUserInfo] = useState(null);
   return (
     <>
-      <div className="py-5 px-3 sm:px-5 backdrop-blur-sm min-h-screen gap-5">
+      <div className="py-5 px-3 sm:px-5 bg-gray-400 min-h-screen gap-5">
         <Navbar />
         <SearchBox setUserInfo={setUserInfo} />
         {userInfo && (

@@ -1,42 +1,47 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import code from '/code.svg'
+import code from "/code.svg";
 const SearchBox = ({ setUserInfo }) => {
   const searchInputRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
   const [loader, setLoader] = useState(false);
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        const searchValue = searchInputRef.current.value.trim();
-        
-        if (searchValue === "") {
-            setErrorMessage("Please enter a handle.");
-            setShowError(true);
-            setTimeout(() => {
-                setShowError(false);
-            }, 5000);
-        } else {
-        setLoader(true);
-        setErrorMessage("");
-        console.log(
-          `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
-        );
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    // search value extraction
+    const searchValue = searchInputRef.current.value.trim();
+    // checking if nothing is there
+    if (searchValue === "") {
+      // show error for 5 seconds
+      setErrorMessage("Please enter a handle.");
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 5000);
+    } else {
+      // if something
+      setLoader(true); // show loader
+      setErrorMessage(""); // no error
       try {
+        // fetch user info
         const response = await fetch(
           `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
         );
+        // store response in data
         const data = await response.json();
-          setLoader(false);
+        // stop loader
+        setLoader(false);
+        // if status is ok->success
         if (data.status === "OK") {
           setUserInfo(data.result[0]);
-          console.log("User info:", data.result);
         } else if (data.status === "FAILED") {
+          // error ocurred
           setErrorMessage(data.comment);
           setUserInfo(null);
           setShowError(true);
           setTimeout(() => {
-              setShowError(false);
+            setShowError(false);
           }, 5000);
         }
       } catch (error) {
@@ -81,19 +86,19 @@ const SearchBox = ({ setUserInfo }) => {
           <input
             type="search"
             className="block w-full p-4 ps-10 font-semibold text-blue-900 border-2 border-black rounded-lg bg-gray-50 "
-            placeholder="Search"
+            placeholder="Username"
             ref={searchInputRef}
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 sm:px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 sm:px-4 py-2 "
           >
             Search
           </button>
         </div>
         {showError && (
           <div className="flex mt-2">
-            <h1 className="text-lg p-2 bg-black text-red-600 font-bold rounded-xl">
+            <h1 className="text-lg p-2 border-2 border-blue-700 text-red-600 font-bold rounded-xl">
               {errorMessage}
             </h1>
           </div>
@@ -105,7 +110,9 @@ const SearchBox = ({ setUserInfo }) => {
               alt="Avatar"
               className="w-20 mb-5 h-20 rounded-full object-cover"
             />
-            <div className="text-orange-700 font-bold text-2xl ">Loading...</div>
+            <div className="text-orange-700 font-bold text-2xl ">
+              Loading...
+            </div>
           </div>
         )}
       </form>
