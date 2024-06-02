@@ -1,37 +1,61 @@
 import React, { useRef, useState, useEffect } from "react";
-
-const SearchBox = () => {
+import { motion } from "framer-motion";
+import code from '/code.svg'
+const SearchBox = ({ setUserInfo }) => {
   const searchInputRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
-
-  const handleSearch = (e) => {
+  const [loader, setLoader] = useState(false);
+    const handleSearch = async (e) => {
+        setLoader(true);
     e.preventDefault();
     const searchValue = searchInputRef.current.value.trim();
 
     if (searchValue === "") {
       setErrorMessage("Please enter a handle.");
-      setShowError(true); 
+      setShowError(true);
       setTimeout(() => {
         setShowError(false);
-      }, 5000); // Hide the error message after 5 seconds
+      }, 5000);
     } else {
       setErrorMessage("");
-      // Perform your search operation with searchValue
-      console.log("Search value:", searchValue);
+      try {
+        const response = await fetch(
+          `${import.meta.env.CF_URL}user.info?handles=${searchValue}`
+        );
+        const data = await response.json();
+          setLoader(false);
+        if (data.status === "OK") {
+          setUserInfo(data.result[0]);
+          console.log("User info:", data.result);
+        } else if (data.status === "FAILED") {
+          setErrorMessage(data.comment);
+          setUserInfo(null);
+          setShowError(true);
+          setTimeout(() => {
+              setShowError(false);
+          }, 5000);
+        }
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
     }
   };
 
-  // Clear the error message if the component unmounts
+  // Clear the error message and user info if the component unmounts
   useEffect(() => {
     return () => {
       setErrorMessage("");
       setShowError(false);
+      setUserInfo(null);
     };
-  }, []);
+  }, [searchInputRef]);
 
   return (
-    <div className="flex justify-center items-center mt-5">
+    <motion.div
+      className="flex justify-center items-center mt-5"
+      whileTap={{ scale: 0.98 }}
+    >
       <form onSubmit={handleSearch} className="w-[90%]">
         <label
           htmlFor="search"
@@ -78,8 +102,18 @@ const SearchBox = () => {
             </h1>
           </div>
         )}
+        {loader && (
+          <div className="flex flex-col justify-center items-center mt-5">
+            <img
+              src={code}
+              alt="Avatar"
+              className="w-20 mb-5 h-20 rounded-full object-cover"
+            />
+            <div className="text-orange-700 font-bold text-2xl ">Loading...</div>
+          </div>
+        )}
       </form>
-    </div>
+    </motion.div>
   );
 };
 
