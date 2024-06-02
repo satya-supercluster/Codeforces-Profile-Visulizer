@@ -18,10 +18,13 @@ const SearchBox = ({ setUserInfo }) => {
         setShowError(false);
       }, 5000);
     } else {
-      setErrorMessage("");
+        setErrorMessage("");
+        console.log(
+          `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
+        );
       try {
         const response = await fetch(
-          `${import.meta.env.CF_URL}user.info?handles=${searchValue}`
+          `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
         );
         const data = await response.json();
           setLoader(false);
@@ -56,7 +59,7 @@ const SearchBox = ({ setUserInfo }) => {
       className="flex justify-center items-center mt-5"
       whileTap={{ scale: 0.98 }}
     >
-      <form onSubmit={handleSearch} className="w-[90%]">
+      <form onSubmit={handleSearch} className="w-[90%] lg:max-w-[50%]">
         <label
           htmlFor="search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
