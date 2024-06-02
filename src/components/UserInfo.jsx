@@ -29,7 +29,7 @@ const UserInfoGrid = ({ userInfo }) => {
           </span>
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-orange-700 flex justify-center items-center">
           <img
             src={userInfo.titlePhoto}
@@ -76,6 +76,10 @@ const UserInfoGrid = ({ userInfo }) => {
             </p>
             <p style={{ color: getColor() }}>
               <span className="font-bold">Max Rank:</span> {userInfo.maxRank}
+            </p>
+            <p style={{ color: getColor() }}>
+              <span className="font-bold">FriendsOfCount:</span>{" "}
+              {userInfo.friendOfCount}
             </p>
             <p style={{ color: getColor() }}>
               <span className="font-bold">Registration Time:</span>{" "}

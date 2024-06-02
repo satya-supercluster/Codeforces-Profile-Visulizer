@@ -1,16 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import code from "/code.svg";
-const SearchBox = ({ setUserInfo }) => {
+const SearchBox = ({ setUserInfo, setUserRatings }) => {
   const searchInputRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
   const [loader, setLoader] = useState(false);
+
   const handleSearch = async (e) => {
     e.preventDefault();
 
     // search value extraction
     const searchValue = searchInputRef.current.value.trim();
+
     // checking if nothing is there
     if (searchValue === "") {
       // show error for 5 seconds
@@ -21,17 +23,19 @@ const SearchBox = ({ setUserInfo }) => {
       }, 5000);
     } else {
       // if something
+
       setLoader(true); // show loader
       setErrorMessage(""); // no error
+
       try {
         // fetch user info
         const response = await fetch(
           `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
         );
+
         // store response in data
         const data = await response.json();
-        // stop loader
-        setLoader(false);
+
         // if status is ok->success
         if (data.status === "OK") {
           setUserInfo(data.result[0]);
@@ -44,6 +48,24 @@ const SearchBox = ({ setUserInfo }) => {
             setShowError(false);
           }, 5000);
         }
+
+        const response1 = await fetch(
+          `${import.meta.env.VITE_CF_URL}user.rating?handle=${searchValue}`
+        );
+        const rating = await response1.json();
+        if (rating.status === "OK") {
+          setUserRatings(rating.result);
+        } else if (rating.status === "FAILED") {
+          // error ocurred
+          setErrorMessage(rating.comment);
+          setUserInfo(null);
+          setShowError(true);
+          setTimeout(() => {
+            setShowError(false);
+          }, 5000);
+        }
+        // stop loader
+        setLoader(false);
       } catch (error) {
         console.error("Error fetching user info:", error);
       }
