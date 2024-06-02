@@ -9,7 +9,11 @@ export default function App() {
       <div className="py-5 px-3 sm:px-5 backdrop-blur-sm min-h-screen gap-5">
         <Navbar />
         <SearchBox setUserInfo={setUserInfo} />
-        {userInfo && <UserInfo userInfo={userInfo} />}
+        {userInfo && (
+          <div className="flex justify-center">
+            <UserInfo userInfo={userInfo} />
+          </div>
+        )}
       </div>
     </>
   );

@@ -10,32 +10,34 @@ const UserInfoGrid = ({ userInfo }) => {
 
   const link = `https://codeforces.com/profile/${userInfo.handle}`;
   return (
-    <div className="flex justify-center flex-col">
-      <p className="rounded-lg shadow-md overflow-hidden flex justify-center items-center mt-10 mb-1">
-        <a href={link}>
-          <img
-            src={userInfo.titlePhoto}
-            alt="Avatar"
-                      className="w-20 h-20 rounded-full object-cover"
-          />
-        </a>
-      </p>
-      <p style={{ color: getColor() }} className="mb-10 text-center">
-        <span className="font-bold underline">
+    <div className="flex justify-center flex-col md:w-[70%] lg:w-[55%]">
+      <div className="py-10 ">
+        <p className="overflow-hidden flex justify-center items-center">
           <a href={link}>
-            {userInfo.firstName} {userInfo.lastName}
+            <img
+              src={userInfo.titlePhoto}
+              alt="Avatar"
+              className="w-20 h-20 rounded-full object-cover"
+            />
           </a>
-        </span>
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-orange-700 flex justify-center items-center">
+        </p>
+        <p style={{ color: getColor() }} className="text-center">
+          <span className="font-bold underline">
+            <a href={link}>
+              {userInfo.firstName} {userInfo.lastName}
+            </a>
+          </span>
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-orange-700 flex justify-center items-center">
           <img
             src={userInfo.titlePhoto}
             alt="Title Photo"
             className="w-full h-full object-cover"
           />
-        </div>
-        <div className="bg-slate-300 rounded-lg shadow-md p-4 flex flex-col justify-center border-2 border-blue-700 ">
+        </div> */}
+        <div className=" bg-slate-300 rounded-lg shadow-md p-4 flex flex-col ">
           <h3 className="text-lg font-bold mb-2 text-center">Personal Info</h3>
           <div className="flex flex-col justify-center text-lg">
             <p style={{ color: getColor() }}>
@@ -54,7 +56,7 @@ const UserInfoGrid = ({ userInfo }) => {
             </p>
           </div>
         </div>
-        <div className="bg-slate-300 rounded-lg shadow-md p-4 flex flex-col justify-center border-2 border-red-700 ">
+        <div className="bg-slate-300 rounded-lg shadow-md p-4 flex flex-col justify-center ">
           <h3 className="text-lg font-bold mb-2 text-center">
             Codeforces Info
           </h3>

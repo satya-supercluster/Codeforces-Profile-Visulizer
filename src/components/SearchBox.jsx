@@ -7,17 +7,17 @@ const SearchBox = ({ setUserInfo }) => {
   const [showError, setShowError] = useState(false);
   const [loader, setLoader] = useState(false);
     const handleSearch = async (e) => {
+        e.preventDefault();
+        const searchValue = searchInputRef.current.value.trim();
+        
+        if (searchValue === "") {
+            setErrorMessage("Please enter a handle.");
+            setShowError(true);
+            setTimeout(() => {
+                setShowError(false);
+            }, 5000);
+        } else {
         setLoader(true);
-    e.preventDefault();
-    const searchValue = searchInputRef.current.value.trim();
-
-    if (searchValue === "") {
-      setErrorMessage("Please enter a handle.");
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 5000);
-    } else {
         setErrorMessage("");
         console.log(
           `${import.meta.env.VITE_CF_URL}user.info?handles=${searchValue}`
@@ -60,12 +60,6 @@ const SearchBox = ({ setUserInfo }) => {
       whileTap={{ scale: 0.98 }}
     >
       <form onSubmit={handleSearch} className="w-[90%] lg:max-w-[50%]">
-        <label
-          htmlFor="search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
@@ -86,14 +80,13 @@ const SearchBox = ({ setUserInfo }) => {
           </div>
           <input
             type="search"
-            id="search"
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="block w-full p-4 ps-10 font-semibold text-blue-900 border-2 border-black rounded-lg bg-gray-50 "
             placeholder="Search"
             ref={searchInputRef}
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 sm:px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
           >
             Search
           </button>

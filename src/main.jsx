@@ -5,7 +5,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="bg-hero-pattern bg-cover">
+    <div className="bg-white-400">
       <App />
     </div>
   </React.StrictMode>
