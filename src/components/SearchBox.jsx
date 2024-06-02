@@ -37,7 +37,8 @@ const SearchBox = ({ setUserInfo, setUserRatings, setUserProblems }) => {
         const data = await response.json();
 
         // if status is ok->success
-        if (data.status === "OK") {
+          if (data.status === "OK") {
+              setShowError(false);
           setUserInfo(data.result[0]);
         } else if (data.status === "FAILED") {
           // error ocurred
@@ -47,6 +48,8 @@ const SearchBox = ({ setUserInfo, setUserRatings, setUserProblems }) => {
           setTimeout(() => {
             setShowError(false);
           }, 5000);
+            setLoader(false);
+          throw data.commit
         }
 
         const response1 = await fetch(
