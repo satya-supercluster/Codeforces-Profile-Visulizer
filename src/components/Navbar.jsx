@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div className='flex justify-center'>
       <motion.div
-        className="w-[90%] flex justify-center font-bold lg:text-xl shadow-md md:bg-black border-2 border-black p-3 rounded-lg gap-2 flex-row  cursor-pointer"
+        className="w-[90%] flex justify-center font-bold lg:text-xl shadow-md bg-white md:bg-black border-2 border-black p-3 rounded-lg gap-2 flex-row  cursor-pointer"
         whileTap={{ scale: 0.9 }}
       >
         <span>
