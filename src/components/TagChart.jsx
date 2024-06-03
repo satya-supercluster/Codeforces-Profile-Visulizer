@@ -151,7 +151,7 @@ const TagChart = ({ userProblems }) => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-5 mt-10">
-        <div className="w-[80%] flex justify-center lg:w-[25%]">
+        <div className="w-[75%] flex justify-center lg:w-[25%]">
           <Pie data={pie} />
         </div>
         <div className="text-sm text-center mb-2 font-semibold">
