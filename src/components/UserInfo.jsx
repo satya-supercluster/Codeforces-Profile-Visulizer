@@ -5,7 +5,7 @@ const UserInfoGrid = ({ userInfo }) => {
     return <div>Loading...</div>;
   }
 
-  const colors = ["#FF5733", "#3433FF", "#C70039"];
+  const colors = ["#FF5F00", "#3433FF", "#C70039"];
   const getColor = () => colors[Math.floor(Math.random() * colors.length)];
 
   const link = `https://codeforces.com/profile/${userInfo.handle}`;
