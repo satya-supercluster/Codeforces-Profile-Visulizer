@@ -4,6 +4,7 @@ import SearchBox from "./components/SearchBox";
 import UserInfo from "./components/UserInfo";
 import RatingGraph from "./components/RatingGraph";
 import TagChart from "./components/TagChart";
+import Recents from "./components/RecentActivity";
 export default function App() {
   const [userInfo, setUserInfo] = useState(null);
   const [userProblems, setUserProblems] = useState(null);
@@ -21,6 +22,11 @@ export default function App() {
         {userInfo && userProblems && userRatings && (
           <div className="flex justify-center">
             <UserInfo userInfo={userInfo} />
+          </div>
+        )}
+        {userInfo && userProblems && userRatings && (
+          <div className="flex justify-center">
+            <Recents problemData={userProblems} />
           </div>
         )}
         {userInfo && userProblems && userRatings && (
