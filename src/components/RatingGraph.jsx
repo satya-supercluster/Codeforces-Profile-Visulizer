@@ -16,9 +16,7 @@ const RatingGraph = ({userRatings,name}) => {
     };
   return (
     <div className="flex flex-col justify-center items-center mt-10">
-      <div className='text-xl text-center font-bold mb-2'>
-        Rating Graph
-      </div>
+      <div className="text-xl text-center font-bold mb-2">Rating Graph</div>
       <div className="w-[100%] flex justify-center lg:w-[65%]">
         <Line data={data} />
       </div>

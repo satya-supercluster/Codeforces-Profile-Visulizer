@@ -10,7 +10,7 @@ export default function App() {
   const [userRatings, setUserRatings] = useState(null);
   return (
     <>
-      <div className="py-5 px-3 sm:px-5 bg-gray-400 min-h-screen gap-5">
+      <div className=" px-3 sm:px-5 bg-gray-400 min-h-screen gap-5">
         <Navbar />
         <SearchBox
           setUserInfo={setUserInfo}
@@ -31,6 +31,10 @@ export default function App() {
             name={`${userInfo.firstName} ${userInfo.lastName}`}
           />
         )}
+        <div className="text-sm text-center mt-10 pb-5 font-semibold">
+          Copyright © 2024 by Satyam Gupta <br /> All right reserved. <br />
+          Made in ❤️ with code
+        </div>
       </div>
     </>
   );
