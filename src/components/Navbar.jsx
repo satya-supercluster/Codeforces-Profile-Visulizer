@@ -2,9 +2,9 @@ import React from 'react'
 import {motion} from 'framer-motion'
 const Navbar = () => {
   return (
-    <div className='flex justify-center py-5'>
+    <div className='flex justify-center py-5 w-full '>
       <motion.div
-        className="w-[90%] flex justify-center font-bold lg:text-xl shadow-md bg-white md:bg-black border-2 border-black p-3 rounded-lg gap-2 flex-row  cursor-pointer"
+        className="w-[90%] flex justify-center font-bold lg:text-xl shadow-md bg-white md:bg-black border-2 border-black p-3 rounded-lg gap-2 flex-row  cursor-pointer fixed z-10"
         whileTap={{ scale: 0.9 }}
       >
         <span>

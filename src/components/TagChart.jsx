@@ -148,7 +148,7 @@ const TagChart = ({ userProblems }) => {
         <h1 className="text-xl text-center mb-2 font-bold">Tag Chart</h1>
         <div className="w-[100%] flex justify-center lg:w-[65%]">
           <Bar data={chartInput} />
-        </div>
+        </div> 
       </div>
       <div className="flex flex-col justify-center items-center gap-5 mt-10">
         <div className="w-[75%] flex justify-center lg:w-[25%]">

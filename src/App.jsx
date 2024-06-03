@@ -12,6 +12,7 @@ export default function App() {
     <>
       <div className=" px-3 sm:px-5 bg-gray-400 min-h-screen gap-5">
         <Navbar />
+        <div className="py-5"></div>
         <SearchBox
           setUserInfo={setUserInfo}
           setUserProblems={setUserProblems}

@@ -107,7 +107,7 @@ const SearchBox = ({ setUserInfo, setUserRatings, setUserProblems }) => {
       whileTap={{ scale: 0.98 }}
     >
       <form onSubmit={handleSearch} className="w-[90%] lg:max-w-[50%]">
-        <div className="relative">
+        <div className="relative z-0">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-yellow-600"
