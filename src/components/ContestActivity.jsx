@@ -11,7 +11,7 @@ const RecentContests = ({ contestData }) => {
   return (
     <div className="mt-10 flex flex-col items-center">
       <h1 className="text-xl text-center mb-2 font-bold">Contests Stats</h1>
-      <div className="bg-slate-300 p-6 rounded-lg mb-6 w-full md:w-[70%] lg:w-[55%]">
+      <div className="bg-slate-300 p-6 rounded-lg mb-6 w-full md:w-[70%] lg:w-[65%]">
         <h2 className="text-xl max-[400px]:text-sm font-bold mb-4">
           Last 5 Contests
         </h2>
@@ -44,7 +44,7 @@ const RecentContests = ({ contestData }) => {
         </div>
       </div>
 
-      <div className="bg-slate-300 max-[400px]:text-sm p-6 rounded-lg w-full md:w-[70%] lg:w-[55%]">
+      <div className="bg-slate-300 max-[400px]:text-sm p-6 rounded-lg w-full md:w-[70%] lg:w-[65%]">
         <h2 className="text-xl max-[400px]:text-sm font-bold mb-4 flex items-center justify-between">
           <span>All Contest Details</span>
           <button
@@ -54,15 +54,15 @@ const RecentContests = ({ contestData }) => {
             {showDetails ? "Hide" : "Show"}
           </button>
         </h2>
-        <p className="text-lg max-[400px]:text-sm font-semibold mb-1 ">
+        <p className="text-lg max-[400px]:text-sm font-semibold mb-4">
           Total Contests: {contestData.length}
         </p>
         {showDetails && (
-          <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[...contestData].reverse().map((contest, index) => (
               <div
                 key={index}
-                className=" bg-gray-100 p-4 rounded-lg shadow-2xl mb-4 hover:shadow-lg transition-shadow duration-300"
+                className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <h3 className="text-lg font-semibold mb-2">
                   {contest.contestName}

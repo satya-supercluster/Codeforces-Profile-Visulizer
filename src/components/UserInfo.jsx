@@ -10,7 +10,7 @@ const UserInfoGrid = ({ userInfo }) => {
 
   const link = `https://codeforces.com/profile/${userInfo.handle}`;
   return (
-    <div className="flex justify-center flex-col md:w-[70%] lg:w-[55%]">
+    <div className="flex justify-center flex-col md:w-[70%] lg:w-[65%]">
       <div className="py-10 ">
         <p className="overflow-hidden flex justify-center items-center">
           <a href={link}>

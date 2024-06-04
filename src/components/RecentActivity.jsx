@@ -83,7 +83,7 @@ const ProblemStats = ({ problemData }) => {
   }, [problemData]);
 
   return (
-    <div className="mt-10 flex flex-col gap-2 w-full sm:w-[75%] lg:w-[55%]">
+    <div className="mt-10 flex flex-col gap-2 w-full sm:w-[75%] lg:w-[65%]">
       <h1 className="text-xl text-center mb-2 font-bold">Problems Stats</h1>
       <div className="grid grid-cols-2 max-[400px]:grid-cols-1 gap-10 max-[400px]:gap-5">
         <div className="bg-slate-300 p-4 rounded-lg">
