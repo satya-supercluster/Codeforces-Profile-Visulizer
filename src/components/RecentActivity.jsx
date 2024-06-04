@@ -67,10 +67,10 @@ const ProblemStats = ({ problemData }) => {
   }, [problemData]);
 
   return (
-    <div className="mt-10 flex flex-col justify-around gap-2 md:w-[70%] lg:w-[55%]">
+    <div className="mt-10 flex flex-col gap-2 w-full sm:w-[75%] lg:w-[55%]">
       <h1 className="text-xl text-center mb-2 font-bold">Problems Stats</h1>
-      <div className="flex flex-col md:flex-row gap-5 md:gap-10">
-        <div className="bg-slate-300 p-4 rounded-lg mr-4 flex-1">
+      <div className="grid grid-cols-2 max-[400px]:grid-cols-1 gap-10 max-[400px]:gap-5">
+        <div className="bg-slate-300 p-4 rounded-lg">
           <h2 className="text-xl text-center font-bold mb-2">Past Week</h2>
           <p>
             <h1 className="text-sm font-semibold">
@@ -88,7 +88,7 @@ const ProblemStats = ({ problemData }) => {
             </h1>
           </p>
         </div>
-        <div className="bg-slate-300 p-4 rounded-lg flex-1">
+        <div className="bg-slate-300 p-4 rounded-lg">
           <h2 className="text-xl text-center font-bold mb-2">Past Month</h2>
           <p>
             <h1 className="text-sm font-semibold">
