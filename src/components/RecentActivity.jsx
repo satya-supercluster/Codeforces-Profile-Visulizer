@@ -72,7 +72,6 @@ const ProblemStats = ({ problemData }) => {
       <div className="grid grid-cols-2 max-[400px]:grid-cols-1 gap-10 max-[400px]:gap-5">
         <div className="bg-slate-300 p-4 rounded-lg">
           <h2 className="text-xl text-center font-bold mb-2">Past Week</h2>
-
             <h1 className="text-sm font-semibold">
               Average Rating: {averageRatingWeek}
             </h1>
