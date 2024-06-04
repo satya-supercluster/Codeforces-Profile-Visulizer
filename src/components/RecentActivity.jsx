@@ -72,39 +72,33 @@ const ProblemStats = ({ problemData }) => {
       <div className="grid grid-cols-2 max-[400px]:grid-cols-1 gap-10 max-[400px]:gap-5">
         <div className="bg-slate-300 p-4 rounded-lg">
           <h2 className="text-xl text-center font-bold mb-2">Past Week</h2>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Average Rating: {averageRatingWeek}
             </h1>
-          </p>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Number of Problems Solved: {numProblemsSolvedWeek}
             </h1>
-          </p>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Active Days: {activeDaysWeek.size}
             </h1>
-          </p>
         </div>
         <div className="bg-slate-300 p-4 rounded-lg">
           <h2 className="text-xl text-center font-bold mb-2">Past Month</h2>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Average Rating: {averageRatingMonth}
             </h1>
-          </p>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Number of Problems Solved: {numProblemsSolvedMonth}
             </h1>
-          </p>
-          <p>
+
             <h1 className="text-sm font-semibold">
               Active Days: {activeDaysMonth.size}
             </h1>
-          </p>
         </div>
       </div>
     </div>
