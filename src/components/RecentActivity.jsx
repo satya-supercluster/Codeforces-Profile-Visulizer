@@ -100,7 +100,7 @@ const ProblemStats = ({ problemData }) => {
           </p>
           <p>
             <h1 className="text-sm font-semibold">
-              Problems Solved: {uniqueProblemsSolvedWeek}
+              Problems Tried: {uniqueProblemsSolvedWeek}
             </h1>
           </p>
           <p>
@@ -123,7 +123,7 @@ const ProblemStats = ({ problemData }) => {
           </p>
           <p>
             <h1 className="text-sm font-semibold">
-              Problems Solved: {uniqueProblemsSolvedMonth}
+              Problems Tried: {uniqueProblemsSolvedMonth}
             </h1>
           </p>
           <p>
